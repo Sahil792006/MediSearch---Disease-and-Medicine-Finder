@@ -1,0 +1,131 @@
+body{
+    margin : 0;
+    font-family: arial, sans-serif;
+    background-color: #666;
+}
+
+.nav-bar{
+    /* background-color: #2c3e50; */
+    background-color: #1a1a1a;
+    /* text-decoration: none; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    color: #d38df8;
+}
+
+.nav-bar header{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-link{
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-link li a{
+    color:  #d38df8;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.nav-link li a:hover{
+    color: #fff;
+}
+
+.introduction{
+    padding:  20px;
+    background-color:  #1a1a1a;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 40px auto;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #d38df8;
+}
+
+.introduction h2{
+    font-weight: 1000;
+    font-size: larger;
+    color: pink;
+}
+
+.introduction p{
+    font-size: 1rem;
+    
+    margin-bottom: 15px;
+}
+
+.modal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1000;
+    }
+
+ .modal-content {
+        background: #fff;
+        padding: 50px;
+        border-radius: 12px;
+        text-align: center;
+        width: 300px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        animation: fadeIn 0.4s ease-in-out;
+    }
+
+.modal-content h2 {
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+.modal-content button {
+        display: flex;
+        width: 100%;
+        margin: 10px 0;
+        padding: 12px;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+     .patient-btn {
+        background: #3498db;
+        color: white;
+    }
+
+    .patient-btn:hover {
+        background: black;
+    }
+
+    .doctor-btn {
+        background: #27ae60;
+        color: white;
+    }
+
+    .doctor-btn:hover {
+        background: black;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    #patientContent {
+        display: none;
+        padding: 20px;
+    }

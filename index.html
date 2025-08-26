@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease and Medicine Finder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="modal" id="roleModal">
+    <div class="modal-content">
+        <h2>Select Your Role</h2>
+        <button class="patient-btn" onclick="selectRole('patient')">Patient</button>
+        <button class="doctor-btn" onclick="selectRole('doctor')">Doctor</button>
+    </div>
+    </div>
+    <nav class="nav-bar">
+        <header>
+            MediSearch | Patient Dashboard
+        </header>
+        <ul class="nav-link">
+            <li><a href="#">Symptom Analyzer</a></li>
+            <li><a href="#">Prescription Analyzer</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="introduction">
+    <h2>INTRODUCTION</h2>
+    <p>
+        The <strong>MediSearch</strong> is a web-based application designed to assist users in 
+        identifying possible diseases based on their symptoms and finding suitable medicines. 
+        The platform allows users to enter their symptoms, after which the system searches 
+        the database and displays relevant diseases, recommended medications, and additional information.
+    </p>
+    <p>
+        The website also provides the option to view medicines prescribed by doctors for accurate treatment guidance. 
+        This project aims to create an easy-to-use interface backed by a reliable database that 
+        stores information about diseases, symptoms, and medicines. 
+    </p>
+    <p>
+        It is particularly useful for preliminary health awareness and as a quick reference tool. 
+        While it does not replace professional medical advice, it serves as an educational and supportive 
+        platform for users seeking health-related information.
+    </p>
+    </div>
+    <script>
+    function selectRole(role) {
+        if (role === 'patient') {
+            document.getElementById('roleModal').style.display = 'none';
+            document.getElementById('patientContent').style.display = 'block';
+        } else if (role === 'doctor') {
+            window.location.href = 'doctor.html';
+        }
+    }
+    </script>
+    
+</body>
+</html>
