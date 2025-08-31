@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MediSearch</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="docPres.css">
     <link rel="icon" type="image/png" href="img/unnamed (1).png">
 </head>
-
 <body>
     <nav class="nav-bar">
         <header>
-           <a href="index.html"><h1>MediSearch | Patient Dashboard</h1></a>
+           <a href="index.html"><h1>MediSearch | Patient Dashboard</h1></a> 
         </header>
         <ul class="nav-link">
             <!-- <li><a href="#">Symptom Analyzer</a></li> -->
@@ -20,15 +19,15 @@
             <li><a href="#">Contact</a></li>
         </ul>
     </nav>
-    <div class="whole">
-        <h1>Welcome, Doctor!</h1>
-        <p>This page is for doctors to manage prescriptions and view patient details.</p>
-        <h2>This WebPage is Under Construction🔧</h2>
-        <div class="back">
-        <a href="index.html" class="btn-primary">Back to Patient Page</a>
+    <div class="container">
+        <h1>Add Doctor Prescription</h1>
+        <form id="imageUploadForm">
+            <label for="prescriptionImage">Upload Prescription Image:</label>
+            <input type="file" id="prescriptionImage" accept="image/*">
+            <button type="submit" class="btn-primary">Upload</button>
+        </form>
+        <p id="outputMessage"></p>
     </div>
-    </div>
-    
 
     <footer class="footer">
     <p>&copy; 2025 MediSearch. All Rights Reserved.</p>
@@ -38,5 +37,6 @@
         <li><a href="#">Contact</a></li>
     </ul>
     </footer>
+    <script src="docPres.js"></script>
 </body>
 </html>

@@ -1,7 +1,8 @@
 body{
     margin : 0;
-    font-family: arial, sans-serif;
-    background-color: #4a90e2;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #F8FAFC;
+    color: #1F2937; 
 }
 
 .nav-bar{
@@ -18,17 +19,17 @@ body{
     justify-content: space-between;
     position: block;
     align-items: center;
-    padding: 5px 10px;
-    color: black;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); 
-    background-color: rgba(16, 110, 190, 1); 
-    
+    padding: 12px 25px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+   background: linear-gradient(90deg, #2193b0, #6dd5ed);
     z-index: 9999;
 }
 
-.nav-bar header{
-    font-size: 1rem;
+.nav-bar header h1{
+    font-size: 1.4rem;
     font-weight: bold;
+    color: white;
 }
 
 .nav-link{
@@ -40,34 +41,38 @@ body{
 }
 
 .nav-link li a{
-    color:  black;
+    color:  white;
     text-decoration: none;
     font-size: 1.2rem;
-    transition: color 0.3s;
+    font-weight: 500;
+    transition: color 0.3s, transform 0.3s;
 }
 
 .nav-link li a:hover{
-    color: #fff;
+    color: #FF6F61;
+    transform: scale(1.1);
 }
 
 .introduction{
     display: flex;
     flex-direction: column;
+    background-color:white ;
     align-items: center;
-    position: relative;
-    padding: 20px;
+    border-radius: 12px;
+    padding: 30px;
     border-radius: 10px;
-    max-width: 100%;
+    max-width: 90%;
     margin: 30px auto;
-    font-family: Arial, sans-serif;
-    line-height: 1.2;
-    color: black;
+    line-height: 1.6;
+    color: #374151;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .introduction h2{
-    font-weight: 1000;
-    font-size: larger;
-    color: black;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #2193b0;
+    margin-bottom: 10px;
 }
 
 .introduction p{
@@ -116,6 +121,10 @@ body{
         transition: background 0.3s;
     }
 
+    .modal-content p{
+        color: red;
+    }
+
      .patient-btn {
         background: #3498db;
         color: white;
@@ -149,18 +158,52 @@ body{
         
     }
 
-    .footer {
-    background-color: #106EBE; 
-    color: white;
+.hero, .hero_1 {
     text-align: center;
-    padding: 15px 20px;
-    margin-top: 40px;
-    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3); 
+    padding: 70px 20px;
+    background: #0e5ca5; 
+    color: white;
+    margin-bottom: 40px;
+    background: linear-gradient(135deg, #2193b0, #6dd5ed);
 }
 
-.footer p {
-    margin: 0;
+.hero h2 , .hero_1 h2{
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+}
+
+.hero p, .hero_1 p {
+    font-size: 1.3  rem;
+    margin-bottom: 25px;
+}
+
+.btn-primary {
+    background-color: #FF6F61;
+    color: white;
+    padding: 14px 28px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
     font-size: 1rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+
+}
+
+.btn-primary:hover {
+    background-color: #ff4b3e;
+    transform: translateY(-3px);
+
+}
+
+.footer {
+    background: linear-gradient(90deg, #2193b0, #6dd5ed);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .footer-links {
@@ -168,66 +211,17 @@ body{
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin: 10px 0 0 0;
+    margin-top: 10px;
     padding: 0;
 }
 
 .footer-links li a {
     color: white;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     transition: color 0.3s;
 }
 
 .footer-links li a:hover {
-    color: #d4d4d4;
-}
-
-.hero {
-    text-align: center;
-    padding: 60px 20px;
-    background: #0e5ca5; 
-    color: white;
-    margin-bottom: 50px;
-}
-
-.hero h2 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-}
-
-.hero_1{
-    text-align: center;
-    padding: 60px 20px;
-    background: #0e5ca5;
-    color: white;
-}
-
-.hero_1 h2{
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-}
-
-.btn-primary {
-    background-color: #fff;
-    color: #106EBE;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: background 0.3s;
-}
-
-.btn-primary:hover {
-    background-color: #ddd;
+    color: #FF6F61;
 }

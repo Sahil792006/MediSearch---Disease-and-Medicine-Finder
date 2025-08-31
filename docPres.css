@@ -1,28 +1,42 @@
 body {
-    margin: 0;
     font-family: Arial, sans-serif;
+    background: #f4f8fb;
+    margin: 0;
+    padding: 0;
 }
 
-.nav-bar {
+.nav-bar{
     position: sticky;
+    
     top: 0;
-    background: linear-gradient(90deg, #2193b0, #6dd5ed);
+}
+
+.nav-bar a{
+    text-decoration: none;
+}
+
+.nav-bar{
+    /* background-color: #2c3e50; */
+    background-color: #106EBE;
+    /* text-decoration: none; */
     display: flex;
     justify-content: space-between;
+    position: block;
     align-items: center;
     padding: 12px 25px;
     color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+   background: linear-gradient(90deg, #2193b0, #6dd5ed);
     z-index: 9999;
 }
 
-.nav-bar header h1 {
+.nav-bar header h1{
     font-size: 1.4rem;
     font-weight: bold;
     color: white;
 }
 
-.nav-link {
+.nav-link{
     list-style: none;
     display: flex;
     gap: 30px;
@@ -30,40 +44,67 @@ body {
     padding: 0;
 }
 
-.nav-link li a {
-    color: white;
+.nav-link li a{
+    color:  white;
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: 500;
     transition: color 0.3s, transform 0.3s;
 }
 
-.nav-link li a:hover {
+.nav-link li a:hover{
     color: #FF6F61;
     transform: scale(1.1);
 }
 
-.nav-bar a{
-    text-decoration: none;
+.container {
+    max-width: 500px;
+    margin: 100px auto;
+    padding: 30px;
+    text-align: center;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input[type="file"] {
+    margin-bottom: 15px;
 }
 
 .btn-primary {
     display: inline-block;
-    padding: 12px 24px;
+    padding: 10px 20px;
     background: linear-gradient(135deg, #007BFF, #00C6FF);
     color: white;
     font-size: 16px;
     font-weight: 600;
-    text-decoration: none;
+    border: none;
     border-radius: 8px;
+    cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
     transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
     background: linear-gradient(135deg, #0056b3, #0096d6);
-    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.5);
     transform: translateY(-2px);
+}
+
+#outputMessage {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #FF6F61;
 }
 
 .footer {
@@ -93,11 +134,4 @@ body {
 
 .footer-links li a:hover {
     color: #FF6F61;
-}
-
-.whole {
-    width: 90%;
-    margin: 50px auto;
-    text-align: center;
-    padding: 50px;
 }

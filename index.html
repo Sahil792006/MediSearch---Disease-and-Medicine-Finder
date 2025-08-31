@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disease and Medicine Finder</title>
+    <title>MediSearch</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/unnamed (1).png">
 </head>
 <body>
     <div class="modal" id="roleModal">
@@ -12,6 +13,7 @@
         <h2>Select Your Role</h2>
         <button class="patient-btn" onclick="selectRole('patient')">Patient</button>
         <button class="doctor-btn" onclick="selectRole('doctor')">Doctor</button>
+        <p><strong>Caution* This is project not a trustable website</strong></p>
     </div>
     </div>
     <nav class="nav-bar">
@@ -21,7 +23,7 @@
         <ul class="nav-link">
             <!-- <li><a href="#">Symptom Analyzer</a></li> -->
             <!-- <li><a href="#">Prescription Analyzer</a></li> -->
-            <li><a href="#">Our Team</a></li>
+            <li><a href="ourTeam.html">Our Team</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
     </nav>
@@ -49,13 +51,13 @@
     <section class="hero">
     <h2>Your Health, Our Priority</h2>
     <p>Analyze symptoms and find the right medicines instantly.</p>
-    <a href="#" class="btn-primary">Start Now</a>
+    <a href="symptonAnalyze.html" class="btn-primary">Start Now</a>
     </section>
 
     <section class="hero_1">
     <h2>Add Your Prescription</h2>
     <p>Analyze Prescription and find the right medicines instantly.</p>
-    <a href="#" class="btn-primary">Start Now</a>
+    <a href="docPres.html" class="btn-primary">Start Now</a>
     </section>
 
     <footer class="footer">
@@ -66,15 +68,7 @@
         <li><a href="#">Contact</a></li>
     </ul>
     </footer>
-    <script>
-    function selectRole(role) {
-        if (role === 'patient') {
-            document.getElementById('roleModal').style.display = 'none';
-            document.getElementById('patientContent').style.display = 'block';
-        } else if (role === 'doctor') {
-            window.location.href = 'doctor.html';
-        }
-    }
+    <script src="index.js">
     </script>
     
 </body>
