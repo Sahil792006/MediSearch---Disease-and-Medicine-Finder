@@ -1,0 +1,96 @@
+/* === Responsive Styles === */
+
+/* Tablet and smaller devices */
+@media (max-width: 768px) {
+    .nav-link {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Adjust based on navbar height */
+        right: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        padding: 10px 0;
+    }
+
+    .nav-link.active {
+        display: flex;
+    }
+
+    .nav-link li {
+        text-align: center;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    #log-btn {
+        width: calc(100% - 40px);
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    .menu-icon {
+        display: block;
+    }
+
+    .options-container {
+        flex-direction: column;
+    }
+
+    .hero, .hero_1 {
+        max-width: 100%;
+        padding: 50px 15px;
+    }
+    
+    .hero h2, .hero_1 h2 {
+        font-size: 2rem;
+    }
+    
+    .hero p, .hero_1 p {
+        font-size: 1.1rem;
+    }
+
+    .introduction {
+        padding: 20px;
+    }
+}
+
+/* Mobile devices */
+@media (max-width: 480px) {
+    main {
+        padding: 15px;
+    }
+
+    .nav-bar header h1 {
+        font-size: 1.2rem;
+    }
+    
+    .hero h2, .hero_1 h2 {
+        font-size: 1.8rem;
+    }
+
+    .hero p, .hero_1 p {
+        font-size: 1rem;
+    }
+
+    .introduction h2 {
+        font-size: 1.5rem;
+    }
+
+    .introduction p {
+        font-size: 0.9rem;
+    }
+
+    .modal-content {
+        width: 80%;
+        padding: 30px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

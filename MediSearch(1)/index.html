@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediSearch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="icon" type="image/png" href="img/unnamed (1).png">
+</head>
+<body>
+    <div class="modal" id="roleModal">
+        <div class="modal-content">
+            <h2>Select Your Role</h2>
+            <button class="patient-btn" onclick="selectRole('patient')">Patient</button>
+            <button class="doctor-btn" onclick="selectRole('doctor')">Doctor</button>
+            <p><strong>Caution* This is project not a trustable website</strong></p>
+        </div>
+    </div>
+
+    <div class="modal" id="loginModal">
+        <div class="modal-content auth-form">
+            <span class="close-btn">&times;</span>
+            <form>
+                <h2>Welcome Back!</h2>
+                <p class="form-description">Log in to continue to your dashboard.</p>
+                <div class="input-group">
+                    <input type="text" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn-primary auth-btn">Log In</button>
+                <p class="form-switcher">Don't have an account? <a href="#" id="showSignUp">Sign Up</a></p>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="signUpModal">
+        <div class="modal-content auth-form">
+            <span class="close-btn">&times;</span>
+            <form>
+                <h2>Create Account</h2>
+                <p class="form-description">Get started with your free account today.</p>
+                <div class="input-group">
+                    <input type="text" placeholder="Username" required>
+                </div>
+                <div class="input-group">
+                    <input type="email" placeholder="Email Address" required>
+                </div>
+                <div class="input-group">
+                    <input type="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn-primary auth-btn">Sign Up</button>
+                <p class="form-switcher">Already have an account? <a href="#" id="showLogin">Log In</a></p>
+            </form>
+        </div>
+    </div>
+
+    <nav class="nav-bar">
+        <header>
+           <h1>MediSearch | Patient Dashboard</h1> 
+        </header>
+        <ul class="nav-link">
+            <li><a href="ourTeam.html">Our Team</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a id="log-btn">Log in</a></li>
+        </ul>
+        <div class="menu-icon">&#9776;</div>
+    </nav>
+    <main>
+        <div class="options-container">
+            <section class="hero">
+                <h2>Your Health, Our Priority</h2>
+                <p>Analyze symptoms and find the right medicines instantly.</p>
+                <a href="symptonAnalyze.html" class="btn-primary">Start Now</a>
+            </section>
+        
+            <section class="hero_1">
+                <h2>Add Your Prescription</h2>
+                <p>Analyze Prescription and find the right medicines instantly.</p>
+                <a href="docPres.html" class="btn-primary">Start Now</a>
+            </section>
+        </div>
+
+        <div class="introduction">
+            <h2>About MediSearch</h2>
+            <p>
+                The <strong>MediSearch</strong> is a web-based application designed to assist users in 
+                identifying possible diseases based on their symptoms and finding suitable medicines. 
+                The platform allows users to enter their symptoms, after which the system searches 
+                the database and displays relevant diseases, recommended medications, and additional information.
+            </p>
+            <p>
+                The website also provides the option to view medicines prescribed by doctors for accurate treatment guidance. 
+                This project aims to create an easy-to-use interface backed by a reliable database that 
+                stores information about diseases, symptoms, and medicines. 
+            </p>
+            <p>
+                It is particularly useful for preliminary health awareness and as a quick reference tool. 
+                While it does not replace professional medical advice, it serves as an educational and supportive 
+                platform for users seeking health-related information.
+            </p>
+        </div>
+    </main>
+
+    <footer class="footer">
+    <p>&copy; 2025 MediSearch. All Rights Reserved.</p>
+    <ul class="footer-links">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+    </footer>
+    <script src="index.js">
+    </script>
+    
+</body>
+</html>
+
