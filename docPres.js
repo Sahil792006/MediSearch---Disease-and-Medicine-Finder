@@ -12,3 +12,5 @@ document.getElementById("imageUploadForm").addEventListener("submit", function (
         outputMessage.style.color = "#FF6F61";
     }
 });
+
+
