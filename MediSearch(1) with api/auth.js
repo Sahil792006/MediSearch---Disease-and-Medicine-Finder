@@ -1,28 +1,55 @@
-// -------------------------
-// This file handles all Login/Signup Modals and API calls
-// Include this file on EVERY page of your site.
-// -------------------------
+// ------------------------------------
+// --- MASTER AUTH SCRIPT ---
+// (This code runs on EVERY page)
+// ------------------------------------
 
 // -------------------------
-// Modal UI Controls
+// Constants
 // -------------------------
 // We must check if the elements exist before adding listeners
 // This prevents errors on pages that might not have them
 const loginModal = document.getElementById("loginModal");
 const signUpModal = document.getElementById("signUpModal");
 const logBtn = document.getElementById("log-btn");
+const logoutBtn = document.getElementById("logout-btn");
+const userAvatar = document.getElementById("user-avatar");
 const loginCloseBtn = loginModal ? loginModal.querySelector(".close-btn") : null;
 const signUpCloseBtn = signUpModal ? signUpModal.querySelector(".close-btn") : null;
 const showSignUp = document.getElementById("showSignUp");
 const showLogin = document.getElementById("showLogin");
-const logoutBtn = document.getElementById("logout-btn");
 
+// Get all elements that should be hidden when logged in
+const loggedOutItems = document.querySelectorAll(".logged-out-item");
+// Get all elements that should be shown when logged in
+const loggedInItems = document.querySelectorAll(".logged-in-item");
+
+// -------------------------
+// Event Listeners
+// -------------------------
+
+// Page Load: Check auth status
+document.addEventListener("DOMContentLoaded", () => {
+  const currentUser = localStorage.getItem("currentUser");
+  const avatarUrl = localStorage.getItem("avatarUrl");
+
+  // Robust check for "dirty" or "null" localStorage values
+  if (currentUser && currentUser !== "null" && currentUser !== "undefined") {
+    console.log("Auth.js: User found in storage, showing user UI");
+    showUserUI(currentUser, avatarUrl);
+  } else {
+    console.log("Auth.js: No user found, showing login UI");
+    showLoginUI();
+  }
+});
+
+// Show Login Modal
 if (logBtn) {
   logBtn.onclick = function () {
     if (loginModal) loginModal.style.display = "flex";
   };
 }
 
+// Show Signup Modal
 if (showSignUp) {
   showSignUp.onclick = function (e) {
     e.preventDefault();
@@ -31,6 +58,7 @@ if (showSignUp) {
   };
 }
 
+// Show Login from Signup
 if (showLogin) {
   showLogin.onclick = function (e) {
     e.preventDefault();
@@ -39,39 +67,44 @@ if (showLogin) {
   };
 }
 
+// Close Modals
 if (loginCloseBtn) {
   loginCloseBtn.onclick = function () {
     if (loginModal) loginModal.style.display = "none";
   };
 }
-
 if (signUpCloseBtn) {
   signUpCloseBtn.onclick = function () {
     if (signUpModal) signUpModal.style.display = "none";
   };
 }
 
-// Close modal on outside click
+// Close on outside click
 window.onclick = function (event) {
   if (event.target == loginModal) loginModal.style.display = "none";
   if (event.target == signUpModal) signUpModal.style.display = "none";
 };
 
+// Handle Logout
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", handleLogout);
+}
+
 // -------------------------
-// Auth API Calls
+// API & Auth Functions
 // -------------------------
 
 // Signup API (local json-server)
-if (signUpModal) {
-  document.querySelector("#signUpModal form").addEventListener("submit", async (e) => {
+const signUpForm = document.querySelector("#signUpModal form");
+if (signUpForm) {
+  signUpForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const username = e.target.querySelector("input[placeholder='Username']").value;
     const email = e.target.querySelector("input[placeholder='Email Address']").value;
     const password = e.target.querySelector("input[placeholder='Password']").value;
 
-    const mockAvatarUrl = `https://placehold.co/40x40/3182ce/FFFFFF?text=${username.charAt(0).toUpperCase()}`;
-
     try {
+      // Check if username is taken
       const check = await fetch(`http://localhost:5000/users?username=${username}`);
       const exists = await check.json();
       if (exists.length > 0) {
@@ -79,119 +112,103 @@ if (signUpModal) {
         return;
       }
 
+      // Create a placeholder avatar
+      const avatarUrl = `https://placehold.co/40x40/3182ce/FFFFFF?text=${username.charAt(0).toUpperCase()}`;
+
+      // Create user
       const res = await fetch("http://localhost:5000/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, email, password, avatarUrl: mockAvatarUrl }),
+        body: JSON.stringify({ username, email, password, avatarUrl }),
       });
 
       if (res.ok) {
-        alert("User created successfully!");
-        signUpModal.style.display = "none";
-        localStorage.setItem("currentUser", username);
-        localStorage.setItem("userAvatar", mockAvatarUrl);
-        showUser(username, mockAvatarUrl);
-      } else {
-        alert("Signup failed.");
+        alert("User created successfully! Please log in.");
+        if (signUpModal) signUpModal.style.display = "none";
+        if (loginModal) loginModal.style.display = "flex";
       }
     } catch (error) {
       alert("Error connecting to local API");
-      console.error("Signup error:", error);
+      console.error(error);
     }
   });
 }
 
 // Login API (local json-server)
-if (loginModal) {
-  document.querySelector("#loginModal form").addEventListener("submit", async (e) => {
+const loginForm = document.querySelector("#loginModal form");
+if (loginForm) {
+  loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const username = e.target.querySelector("input[placeholder='Username']").value;
     const password = e.target.querySelector("input[placeholder='Password']").value;
 
-    console.log(`Auth.js: Attempting login for user: ${username}`);
-
     try {
-      const apiUrl = `http://localhost:5000/users?username=${username}&password=${password}`;
-      const res = await fetch(apiUrl);
-      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-      
+      const res = await fetch(`http://localhost:5000/users?username=${username}&password=${password}`);
       const data = await res.json();
 
       if (data.length > 0) {
         const user = data[0];
-        console.log("Auth.js: Login successful. User data:", user);
         alert(`Welcome back, ${user.username}!`);
-        loginModal.style.display = "none";
-        
+        if (loginModal) loginModal.style.display = "none";
+
+        // Save data to localStorage
         localStorage.setItem("currentUser", user.username);
-        localStorage.setItem("userAvatar", user.avatarUrl); // Save avatar
-        showUser(user.username, user.avatarUrl); // Pass avatar
+        localStorage.setItem("avatarUrl", user.avatarUrl);
+
+        // Show the user UI
+        showUserUI(user.username, user.avatarUrl);
       } else {
-        console.warn("Auth.js: Login failed: Invalid username or password.");
         alert("Invalid username or password");
       }
     } catch (error) {
-      console.error("Auth.js: Login fetch error:", error);
-      alert("Error connecting to local API. Is your json-server running?");
+      alert("Error connecting to local API");
+      console.error(error);
     }
   });
 }
 
+// Logout Function
+function handleLogout() {
+  localStorage.removeItem("currentUser");
+  localStorage.removeItem("avatarUrl");
+  showLoginUI();
+  alert("Logged out successfully!");
+}
+
 // -------------------------
-// UI Update Functions
+// UI Helper Functions
 // -------------------------
 
-// Show current user avatar in nav bar
-function showUser(username, avatarUrl) {
-  const logBtn = document.getElementById("log-btn");
-  const userAvatar = document.getElementById("user-avatar");
-  const logoutBtn = document.getElementById("logout-btn"); // Get logout button here
-
-  if (logBtn) logBtn.style.display = "none";
-
-  if (userAvatar) {
-    userAvatar.src = avatarUrl || `https://placehold.co/40x40/3182ce/FFFFFF?text=${username.charAt(0).toUpperCase()}`;
-    userAvatar.alt = username;
-    userAvatar.style.display = "inline-block";
-  } else {
-    console.error("Auth.js: Could not find #user-avatar element!");
-  }
+// Show UI for a logged-in user
+function showUserUI(username, avatarUrl) {
+  // Show logged-in items
+  loggedInItems.forEach(item => {
+    item.style.display = 'inline-block';
+  });
   
-  if (logoutBtn) {
-    logoutBtn.style.display = "inline-block";
-    console.log("Auth.js: Logout button set to display: inline-block");
-  } else {
-    console.error("Auth.js: Could not find #logout-btn element!");
+  // Hide logged-out items
+  loggedOutItems.forEach(item => {
+    item.style.display = 'none';
+  });
+
+  // Set avatar
+  if (userAvatar) {
+    userAvatar.src = avatarUrl;
+    userAvatar.alt = `${username}'s avatar`;
   }
 }
 
-// Logout
-if (logoutBtn) {
-  logoutBtn.addEventListener("click", () => {
-    localStorage.removeItem("currentUser");
-    localStorage.removeItem("userAvatar");
+// Show UI for a logged-out user
+function showLoginUI() {
+  // Hide logged-in items
+  loggedInItems.forEach(item => {
+    item.style.display = 'none';
+  });
 
-    const userAvatar = document.getElementById("user-avatar");
-    if (userAvatar) userAvatar.style.display = "none";
-
-    const logBtn = document.getElementById("log-btn");
-    if(logBtn) logBtn.style.display = "inline-block";
-    
-    logoutBtn.style.display = "none";
-    alert("Logged out successfully!");
+  // Show logged-out items
+  loggedOutItems.forEach(item => {
+    // Use list-item to show them in the nav bar
+    item.style.display = 'list-item';
   });
 }
-
-// Keep user shown after reload
-// This runs on every page that includes this script
-window.addEventListener("DOMContentLoaded", () => {
-  const currentUser = localStorage.getItem("currentUser");
-  const currentAvatar = localStorage.getItem("userAvatar");
-  
-  console.log(`Auth.js: Page loaded. User: ${currentUser}`);
-
-  if (currentUser) {
-    showUser(currentUser, currentAvatar);
-  }
-});
 

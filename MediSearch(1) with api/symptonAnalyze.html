@@ -13,11 +13,10 @@
     <!-- Added ALL required CSS files -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="responsive.css">
-    <link rel="stylesheet" href="symptonAnalyzer.css"> 
     
     <link rel="icon" type="image/png" href="img/unnamed (1).png">
 </head>
-<body>
+<body class="page-wrapper"> <!-- Added page-wrapper -->
 
     <!-- === ADDED LOGIN MODAL === -->
     <div class="modal" id="loginModal">
@@ -68,42 +67,50 @@
            </a>
         </header>
         <ul class="nav-link">
-            <li><a href="ourTeam.html">Our Team</a></li>
+            <!-- <li><a href="ourTeam.html">Our Team</a></li> -->
             <li><a href="contact.html">Contact</a></li>
             
-            <!-- ADDED AUTH ELEMENTS -->
-            <li><a id="log-btn">Log in</a></li>
-            <li>
-                <img id="user-avatar" src="" alt="User" style="display:none;">
+            <!-- Auth elements controlled by auth.js -->
+            <li class="logged-out-item"><a id="log-btn">Log in</a></li>
+            <li class="logged-in-item" style="display: none;">
+                <img id="user-avatar" src="" alt="User Avatar">
             </li>
-            <li><a id="logout-btn" style="display:none;">Logout</a></li>
+            <li class="logged-in-item" style="display: none;">
+                <a id="logout-btn">Logout</a>
+            </li>
         </ul>
-        <!-- ADDED MENU ICON -->
         <div class="menu-icon">&#9776;</div>
     </nav>
 
-    <!-- Page-specific content (unchanged) -->
-    <div class="container">
-        <h2>Search Your Symptoms</h2>
-        <input type="text" id="symptomInput" placeholder="Enter symptoms (e.g. fever, cough)">
-        <button onclick="showResult()">Search</button>
+    <!-- Page-specific content -->
+    <main class="content-wrapper"> <!-- Added content-wrapper -->
+        <div class="container">
+            <h2>Search Your Symptoms</h2>
+            <input type="text" id="symptomInput" placeholder="Enter symptoms (e.g. fever, cough)">
+            <button onclick="showResult()">Search</button>
 
-        <div class="result-box" id="resultBox">
+            <div class="result-box" id="resultBox">
+                <!-- Results will be injected here by symptonAnalyer.js -->
+            </div>
         </div>
-    </div>
+    </main>
 
     <footer class="footer">
-    <p>&copy; 2025 MediSearch. All Rights Reserved.</p>
-    <ul class="footer-links">
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Terms of Service</a></li>
-        <li><a href="#">Contact</a></li>
-    </ul>
+        <p>&copy; 2025 MediSearch. All Rights Reserved.</p>
+        <ul class="footer-links">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
     </footer>
     
-    <!-- Scripts must be in this order -->
+    <!-- === FLOATING THEME TOGGLE BUTTON === -->
+    <button id="themeToggle" class="theme-toggle-btn">🌙</button>
+
+    <!-- === CORRECT SCRIPT ORDER === -->
     <script src="symptonAnalyer.js"></script>
     <script src="auth.js"></script>
+    <script src="theme.js"></script>
 </body>
 </html>
 

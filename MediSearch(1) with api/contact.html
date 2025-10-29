@@ -5,123 +5,129 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us | MediSearch</title>
   
-  <!-- Added Poppins Font -->
+  <!-- Links to your main CSS files -->
+  <link rel="stylesheet" href="style.css"> 
+  <link rel="stylesheet" href="responsive.css">
+  
+  <link rel="icon" type="image/png" href="img/unnamed (1).png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Linking to the MAIN CSS files -->
-  <link rel="stylesheet" href="contact.css">
-  <link rel="stylesheet" href="responsive.css">
-  <!-- We will move contact.css styles into style.css -->
-  
-  <link rel="icon" type="image/png" href="img/unnamed (1).png">
 </head>
-<body>
+<body class="page-wrapper">
 
-  <!-- === ADDED LOGIN MODAL === -->
+  <!-- === MODALS (Copied from index.html) === -->
   <div class="modal" id="loginModal">
-      <div class="modal-content auth-form">
-          <span class="close-btn">&times;</span>
-          <form>
-              <h2>Welcome Back!</h2>
-              <p class="form-description">Log in to continue to your dashboard.</p>
-              <div class="input-group">
-                  <input type="text" placeholder="Username" required>
-              </div>
-              <div class="input-group">
-                  <input type="password" placeholder="Password" required>
-              </div>
-              <button type="submit" class="btn-primary auth-btn">Log In</button>
-              <p class="form-switcher">Don't have an account? <a href="#" id="showSignUp">Sign Up</a></p>
-          </form>
-      </div>
+    <div class="modal-content auth-form">
+      <span class="close-btn">&times;</span>
+      <form>
+        <h2>Welcome Back!</h2>
+        <p class="form-description">Log in to continue to your dashboard.</p>
+        <div class="input-group">
+          <input type="text" placeholder="Username" required>
+        </div>
+        <div class="input-group">
+          <input type="password" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn-primary auth-btn">Log In</button>
+        <p class="form-switcher">Don't have an account? <a href="#" id="showSignUp">Sign Up</a></p>
+      </form>
+    </div>
   </div>
 
-  <!-- === ADDED SIGNUP MODAL === -->
   <div class="modal" id="signUpModal">
-      <div class="modal-content auth-form">
-          <span class="close-btn">&times;</span>
-          <form>
-              <h2>Create Account</h2>
-              <p class="form-description">Get started with your free account today.</p>
-              <div class="input-group">
-                  <input type="text" placeholder="Username" required>
-              </div>
-              <div class="input-group">
-                  <input type="email" placeholder="Email Address" required>
-              </div>
-              <div class="input-group">
-                  <input type="password" placeholder="Password" required>
-              </div>
-              <button type="submit" class="btn-primary auth-btn">Sign Up</button>
-              <p class="form-switcher">Already have an account? <a href="#" id="showLogin">Log In</a></p>
-          </form>
-      </div>
+    <div class="modal-content auth-form">
+      <span class="close-btn">&times;</span>
+      <form>
+        <h2>Create Account</h2>
+        <p class="form-description">Get started with your free account today.</p>
+        <div class="input-group">
+          <input type="text" placeholder="Username" required>
+        </div>
+        <div class="input-group">
+          <input type="email" placeholder="Email Address" required>
+        </div>
+        <div class="input-group">
+          <input type="password" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn-primary auth-btn">Sign Up</button>
+        <p class="form-switcher">Already have an account? <a href="#" id="showLogin">Log In</a></p>
+      </form>
+    </div>
   </div>
 
   <!-- === UPDATED NAV BAR === -->
   <nav class="nav-bar">
     <header>
-      <a href="index.html" style="text-decoration: none; color: inherit;">
-          <h1>MediSearch | Patient Dashboard</h1>
-      </a>
+       <a href="index.html" style="text-decoration: none; color: inherit;">
+           <h1>MediSearch | Patient Dashboard</h1>
+       </a>
     </header>
     <ul class="nav-link">
-      <li><a href="ourTeam.html">Our Team</a></li>
+      <!-- <li><a href="ourTeam.html">Our Team</a></li> -->
       <li><a href="contact.html">Contact</a></li>
       
-      <!-- ADDED AUTH ELEMENTS -->
-      <li><a id="log-btn">Log in</a></li>
-      <li>
-          <img id="user-avatar" src="" alt="User" style="display:none;">
+      <!-- Auth elements controlled by auth.js -->
+      <li class="logged-out-item"><a id="log-btn">Log in</a></li>
+      <li class="logged-in-item" style="display: none;">
+          <img id="user-avatar" src="" alt="User Avatar">
       </li>
-      <li><a id="logout-btn" style="display:none;">Logout</a></li>
+      <li class="logged-in-item" style="display: none;">
+          <a id="logout-btn">Logout</a>
+      </li>
     </ul>
-    <!-- ADDED MENU ICON -->
     <div class="menu-icon">&#9776;</div>
   </nav>
 
-  <!-- === CONTACT PAGE CONTENT (Unchanged) === -->
-  <div class="contact-container">
-    <h2>Contact Us</h2>
-
-    <div class="contact-info">
-      <div class="info-box">
-        <h3>📍 Address</h3>
-        <p>---------------</p>
+  <!-- Main Contact Page Content -->
+  <main class="content-wrapper">
+    <div class="contact-container">
+      <h2>Contact Us</h2>
+      <div class="contact-info">
+        <div class="info-box">
+          <h3>📍 Address</h3>
+          <p>---------------</p>
+        </div>
+        <div class="info-box">
+          <h3>📞 Phone</h3>
+          <p>+91-7986xxxxxx</p>
+        </div>
+        <div class="info-box">
+          <h3>📧 Email</h3>
+          <p>saurav0760.becse24@chitkara.edu.in</p>
+        </div>
       </div>
-      <div class="info-box">
-        <h3>📞 Phone</h3>
-        <p>+91-7986xxxxxx</p>
-      </div>
-      <div class="info-box">
-        <h3>📧 Email</h3>
-        <p>saurav0760.becse24@chitkara.edu.in</p>
-      </div>
+      <form id="contactForm">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="text" name="subject" placeholder="Subject" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
     </div>
+  </main>
 
-    <form id="contactForm">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <input type="text" name="subject" placeholder="Subject" required>
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </div>
-  
-  <!-- === FOOTER (Added from style.css for consistency) === -->
+  <!-- Footer -->
   <footer class="footer">
     <p>&copy; 2025 MediSearch. All Rights Reserved.</p>
     <ul class="footer-links">
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Terms of Service</a></li>
-        <li><a href="#">Contact</a></li>
+      <li><a href="#">Privacy Policy</a></li>
+      <li><a href="#">Terms of Service</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
   </footer>
 
-  <!-- === UPDATED SCRIPT ORDER === -->
+  <!-- === FLOATING THEME TOGGLE BUTTON === -->
+  <button id="themeToggle" class="theme-toggle-btn">🌙</button>
+
+  <!-- === CORRECT SCRIPT ORDER === -->
+  <!-- Page-specific script first -->
   <script src="contact.js"></script>
+  <!-- Master auth script second -->
   <script src="auth.js"></script>
+  <!-- Theme script last -->
+  <script src="theme.js"></script>
+  
 </body>
 </html>
+
