@@ -1,0 +1,79 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "sahil",
+      "email": "sahil@example.com",
+      "password": "pass",
+      "avatarUrl": "https://placehold.co/40x40/3182ce/FFFFFF?text=S"
+    },
+    {
+      "id": "2",
+      "username": "jane",
+      "email": "jane@example.com",
+      "password": "doe",
+      "avatarUrl": "https://placehold.co/40x40/FF6F61/FFFFFF?text=J"
+    },
+    {
+      "id": "de63",
+      "username": "ok",
+      "email": "ok@gmail.com",
+      "password": "ok1",
+      "avatarUrl": "https://placehold.co/40x40/3182ce/FFFFFF?text=O"
+    },
+    {
+      "id": "a44b",
+      "username": "sarthak",
+      "email": "sarthak@gmail.com",
+      "password": "pass",
+      "avatarUrl": "https://placehold.co/40x40/3182ce/FFFFFF?text=S"
+    }
+  ],
+  "symptoms": [
+    {
+      "id": "1",
+      "name": "fever",
+      "possible_causes": [
+        "Viral Infection",
+        "Flu",
+        "Malaria",
+        "COVID-19"
+      ],
+      "suggested_medicines": [
+        "Paracetamol",
+        "Ibuprofen"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "cough",
+      "possible_causes": [
+        "Cold",
+        "Flu",
+        "Bronchitis",
+        "Allergy"
+      ],
+      "suggested_medicines": [
+        "Cough Syrup",
+        "Lozenges",
+        "Antihistamine"
+      ]
+    },
+    {
+      "id": "3",
+      "name": "headache",
+      "possible_causes": [
+        "Stress",
+        "Dehydration",
+        "Migraine",
+        "Lack of Sleep"
+      ],
+      "suggested_medicines": [
+        "Aspirin",
+        "Ibuprofen",
+        "Water"
+      ]
+    }
+  ],
+  "messages": []
+}
